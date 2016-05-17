@@ -54,14 +54,20 @@ class MessagesController extends Controller
         // $threads = Thread::forUserWith mNewMessages($currentUserId)->latest('updated_at')->get();
 
 
-//        return response()->json($threads);
-
-        return view('messenger.json', compact('threads', 'currentUserId'));
-
-//        $contents = View::make('messenger.json', compact('threads', 'currentUserId'));
-//        $response = Response::make($contents, $statusCode);
-//        $response->header('Content-Type', 'application/javascript');
-//        return $response;
+$jsonthread = $threads->map(function ($item, $key) {
+    
+    $item['name'] = $thread->creator()->name; 
+    $item['body'] = $thread->latestMessage->body; 
+    $item['url'] = url('messages/' . $thread->id); 
+    $item['avatar'] = \Gravatar::get(Auth::user()->email);   
+        
+    return $item;
+});
+        
+        
+        return response()->json($jsonthread);
+        //return view('messenger.json', compact('threads', 'currentUserId'));
+ 
     }
 
     /**
