@@ -17,7 +17,7 @@ Route::get('/', function () {
 
 Route::auth();
 
-Route::get('/home', 'HomeController@index');
+Route::get('/home', 'PostController@index');
 
 
 Route::group(['prefix' => 'messages', 'middleware' => ['auth']], function () {

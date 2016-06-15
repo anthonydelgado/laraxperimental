@@ -45,6 +45,8 @@
     {{--}--}}
     {{--</style>--}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.24/vue.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-resource/0.7.0/vue-resource.min.js" type="text/javascript"></script>
+
 </head>
 <body class="skin-blue @if (Auth::guest()) sidebar-collapse @else sidebar-mini @endif ">
 <div class="wrapper">

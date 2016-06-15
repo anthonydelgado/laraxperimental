@@ -54,12 +54,13 @@ class MessagesController extends Controller
         // $threads = Thread::forUserWith mNewMessages($currentUserId)->latest('updated_at')->get();
 
 
-$jsonthread = $threads->map(function ($item, $key) {
-    
-    $item['name'] = $thread->creator()->name; 
-    $item['body'] = $thread->latestMessage->body; 
-    $item['url'] = url('messages/' . $thread->id); 
-    $item['avatar'] = \Gravatar::get(Auth::user()->email);   
+$jsonthread = $threads->map(function ($item, $key) {  
+
+    $item['name'] = $item->creator()->name;
+//    $item['email'] = $item->creator()->email;
+    $item['body'] = $item->latestMessage->body;
+    $item['url'] = url('messages/' . $item->id);
+    $item['avatar'] = \Gravatar::get($item->creator()->email);
         
     return $item;
 });

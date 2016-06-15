@@ -11,6 +11,11 @@
 
                 <div class="panel-body">
                     You are logged in!
+
+                    <span>Message is: @{{ magicmessage }}</span>
+                    <br>
+                    <input type="text" v-model="magicmessage" placeholder="edit me">
+
                 </div>
             </div>
             @if ( !$posts->count() )
